@@ -11,63 +11,44 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/customers")
 class CustomerController(
     //injecao de dependencia
-    customerService: CustomerService
+    val customerService: CustomerService
 ) {
-
-    val customerList = mutableListOf<CustomerModel>()
-
     @GetMapping
-    fun getCustomer(@RequestParam name: String?): List<CustomerModel> {
-        name?.let {
-            return customerList.filter { it.name.contains(name, true) }
-        }
-        return customerList
+    fun getAll(@RequestParam name: String?): List<CustomerModel> {
+        return customerService.getAll(name)
     }
 
     @GetMapping("/{id}")
-    //estamos recebendo uma variável pela url
     fun getCustomerById(@PathVariable id: String): CustomerModel {
-        return customerList.filter{it.id == id}.first()
+        return customerService.getCustomerById(id)
     }
 
     @GetMapping("/name/{name}")
-    //estamos recebendo uma variável pela url
     fun getCustomerByNome(@PathVariable name: String): List<CustomerModel> {
-        return customerList.filter{it.name.contains(name, true)}
+        return customerService.getCustomerByNome(name)
     }
 
     @GetMapping("/email/{email}")
-    //estamos recebendo uma variável pela url
     fun getCustomerByEmail(@PathVariable email: String): List<CustomerModel> {
-        return customerList.filter{it.email.contains(email, true)}
+        return customerService.getCustomerByEmail(email)
     }
-
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createCustomer(@RequestBody customer: PostCustomerRequest) {
-        val id = if (customerList.isEmpty()) {
-            "1"
-        } else {
-            customerList.last().id.toInt() +1
-        }.toString()
-
-        customerList.add(CustomerModel(id, customer.name, customer.email))
+        customerService.createCustomer(customer)
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun update(@PathVariable id: String, @RequestBody customer: PutCustomerRequest) {
-        customerList.filter{it.id == id}.first().let {
-            it.name = customer.name
-            it.email = customer.email
-        }
+        customerService.update(id, customer)
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun delete(@PathVariable id: String) {
-        customerList.removeIf { it.id == id }
+        customerService.delete(id)
     }
 }
 
