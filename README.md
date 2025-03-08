@@ -1,4 +1,4 @@
-# Getting Started - Primeiro Projeto Spring Boot e Koylin
+# Getting Started - Primeiro Projeto Spring Boot e Kotlin
 
 ### Tecnologias Utilizadas
 
