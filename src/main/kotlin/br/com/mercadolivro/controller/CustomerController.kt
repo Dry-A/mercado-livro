@@ -3,12 +3,16 @@ package br.com.mercadolivro.controller
 import br.com.mercadolivro.model.CustomerModel
 import br.com.mercadolivro.request.PostCustomerRequest
 import br.com.mercadolivro.request.PutCustomerRequest
+import br.com.mercadolivro.service.CustomerService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/customers")
-class CustomerController {
+class CustomerController(
+    //injecao de dependencia
+    customerService: CustomerService
+) {
 
     val customerList = mutableListOf<CustomerModel>()
 
