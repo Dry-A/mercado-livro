@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/customers")
 class CustomerController(
-    //injecao de dependencia
     val customerService: CustomerService
 ) {
     @GetMapping

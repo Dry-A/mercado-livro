@@ -38,7 +38,6 @@ class CustomerService {
         } else {
             customerList.last().id.toInt() + 1
         }.toString()
-
         customerList.add(CustomerModel(id, customer.name, customer.email))
     }
 
