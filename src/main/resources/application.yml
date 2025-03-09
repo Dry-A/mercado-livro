@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+      datasource:
+        url: jdbc:mysql://localhost:3307/mercadolivro
+        username: root
+        password: root
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
