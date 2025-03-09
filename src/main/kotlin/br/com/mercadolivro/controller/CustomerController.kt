@@ -1,5 +1,6 @@
 package br.com.mercadolivro.controller
 
+import br.com.mercadolivro.extension.toCostumerModel
 import br.com.mercadolivro.model.CustomerModel
 import br.com.mercadolivro.request.PostCustomerRequest
 import br.com.mercadolivro.request.PutCustomerRequest
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*
 class CustomerController(
     val customerService: CustomerService
 ) {
+
     @GetMapping
     fun getAll(@RequestParam name: String?): List<CustomerModel> {
         return customerService.getAll(name)
@@ -34,14 +36,14 @@ class CustomerController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createCustomer(@RequestBody customer: PostCustomerRequest) {
-        customerService.createCustomer(customer)
+    fun create(@RequestBody customer: PostCustomerRequest) {
+        customerService.create(customer.toCostumerModel())
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun update(@PathVariable id: String, @RequestBody customer: PutCustomerRequest) {
-        customerService.update(id, customer)
+        customerService.update(customer.toCostumerModel(id))
     }
 
     @DeleteMapping("/{id}")
