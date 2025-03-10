@@ -1,14 +1,15 @@
-# Getting Started - Primeiro Projeto Spring Boot e Kotlin
+# Bem-vindos ao meu MarketPlaace de Livros - meu primeiro Projeto Spring Boot e Kotlin
 
 ### Tecnologias Utilizadas
 
 * Spring v3.4.3👢
 * Gradle 🐘
-* Postman 👩🏼‍🚀
 * Kotlin no Backend
 * MySQL
 * Spring Data
+* Flyway
 * Eventos
+* Postman 👩🏼‍🚀
 * Spring Security
 * Testes Unitários com Mockk
 
@@ -16,13 +17,20 @@
 
 ![codando](https://pixeljoint.com/files/icons/full/desktopoverlay.gif)
 
+O projeto e estudo foi feito de fora para dentro.  ✅
+Primeiro fiz a model e todo o código na camada de Controller - praticamente fazendo na "mão" - depois fui organizando, retirando a lógica da controller e passando para a camada de Service.
+Só então criei a camada de Repository, com métodos de busca e inserção no banco de dados mais específicos.
 
-For further reference, please consider the following sections:
+🟢 Escolhi o MySQL para o banco de dados, por ser um banco que já tenho mais familiaridade e por ser um banco que é muito utilizado no mercado. Porém usei uma imagem docker para subir o banco de dados, para não precisar instalar o MySQL na minha máquina.
+Para isso funcionar é necessário ter o Docker instalado na máquina. No caso eu tenho o docker desktop.
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/3.4.3/gradle-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.4.3/gradle-plugin/packaging-oci-image.html)
-* [Spring Web](https://docs.spring.io/spring-boot/3.4.3/reference/web/servlet.html)
+No projeto eu uso o 📔Flyway para fazer a migração do banco de dados. O Flyway é uma ferramenta de migração de banco de dados de código aberto. 
+Ele traz ordem e controle😮‍💨 para o processo de migração de banco de dados, permitindo que equipes de desenvolvimento colaborem de forma eficaz. É a primeira vez que uso o Flyway e achei muito interessante.
+Ele é uma dependencia do projeto, 🐌 então não é necessário instalar nada na máquina. 
+
+Basta rodar o projeto que ele cria a tabela de migração no banco de dados e faz a migração dos scripts que estão na pasta resources/db/migration.
+
+
 
 ### Guides
 
