@@ -1,9 +1,9 @@
 package br.com.mercadolivro.controller
 
+import br.com.mercadolivro.controller.request.PostCustomerRequest
+import br.com.mercadolivro.controller.request.PutCustomerRequest
 import br.com.mercadolivro.extension.toCostumerModel
 import br.com.mercadolivro.model.CustomerModel
-import br.com.mercadolivro.request.PostCustomerRequest
-import br.com.mercadolivro.request.PutCustomerRequest
 import br.com.mercadolivro.service.CustomerService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -25,7 +25,7 @@ class CustomerController(
     }
 
     @GetMapping("/name/{name}")
-    fun getCustomerByNome(@PathVariable name: String): List<CustomerModel> {
+    fun getCustomerByName(@PathVariable name: String): List<CustomerModel> {
         return customerService.getCustomerByName(name)
     }
 

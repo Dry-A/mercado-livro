@@ -2,8 +2,7 @@ package br.com.mercadolivro.model
 
 import jakarta.persistence.*
 
-@Entity
-@Table(name = "customers")
+@Entity(name = "customers")
 data class CustomerModel(
 
     @Id
