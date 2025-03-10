@@ -6,8 +6,6 @@ import br.com.mercadolivro.controller.request.PutCustomerRequest
 import br.com.mercadolivro.enums.BookStatus
 import br.com.mercadolivro.model.BookModel
 import br.com.mercadolivro.model.CustomerModel
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
-import java.awt.print.Book
 
 fun PostCustomerRequest.toCostumerModel(): CustomerModel {
     return CustomerModel(
@@ -15,7 +13,6 @@ fun PostCustomerRequest.toCostumerModel(): CustomerModel {
         email = this.email
     )
 }
-
 fun PutCustomerRequest.toCostumerModel(id: Int): CustomerModel {
     return CustomerModel(
         id = id,
@@ -23,7 +20,6 @@ fun PutCustomerRequest.toCostumerModel(id: Int): CustomerModel {
         email = this.email
     )
 }
-
 fun PostBookRequest.toBookModel(customer: CustomerModel): BookModel {
     return BookModel(
         name = this.name,

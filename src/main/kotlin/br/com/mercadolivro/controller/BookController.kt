@@ -12,15 +12,12 @@ import org.springframework.web.bind.annotation.*
 class BookController(
     val bookService: BookService,
     val customerService: CustomerService
-
 ) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun create(@RequestBody request: PostBookRequest) {
-
         val customer = customerService.getCustomerById(request.customerId)
         bookService.create(request.toBookModel(customer))
-
     }
 }

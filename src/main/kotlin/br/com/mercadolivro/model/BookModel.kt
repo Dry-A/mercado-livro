@@ -12,12 +12,9 @@ data class BookModel(
     var id: Int? = null,
     var name: String,
     var price: BigDecimal,
-
     @Enumerated(EnumType.STRING)
     var status: BookStatus?,
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     var customer: CustomerModel?
-
-    )
+)
