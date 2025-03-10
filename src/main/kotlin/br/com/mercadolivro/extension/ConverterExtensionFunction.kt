@@ -11,7 +11,7 @@ fun PostCustomerRequest.toCostumerModel(): CustomerModel {
     )
 }
 
-fun PutCustomerRequest.toCostumerModel(id: String): CustomerModel {
+fun PutCustomerRequest.toCostumerModel(id: Int): CustomerModel {
     return CustomerModel(
         id = id,
         name = this.name,

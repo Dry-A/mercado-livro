@@ -20,13 +20,13 @@ class CustomerController(
     }
 
     @GetMapping("/{id}")
-    fun getCustomerById(@PathVariable id: String): CustomerModel {
+    fun getCustomerById(@PathVariable id: Int): CustomerModel {
         return customerService.getCustomerById(id)
     }
 
     @GetMapping("/name/{name}")
     fun getCustomerByNome(@PathVariable name: String): List<CustomerModel> {
-        return customerService.getCustomerByNome(name)
+        return customerService.getCustomerByName(name)
     }
 
     @GetMapping("/email/{email}")
@@ -42,13 +42,13 @@ class CustomerController(
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun update(@PathVariable id: String, @RequestBody customer: PutCustomerRequest) {
+    fun update(@PathVariable id: Int, @RequestBody customer: PutCustomerRequest) {
         customerService.update(customer.toCostumerModel(id))
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun delete(@PathVariable id: String) {
+    fun delete(@PathVariable id: Int) {
         customerService.delete(id)
     }
 }

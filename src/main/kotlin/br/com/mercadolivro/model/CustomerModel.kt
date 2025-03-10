@@ -1,7 +1,14 @@
 package br.com.mercadolivro.model
 
+import jakarta.persistence.*
+
+@Entity
+@Table(name = "customers")
 data class CustomerModel(
-    var id: String? = null,
-    var name: String,
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int? = null,
+    var name: String ,
     var email: String
 )

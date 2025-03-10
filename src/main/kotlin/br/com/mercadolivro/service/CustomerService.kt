@@ -1,51 +1,50 @@
 package br.com.mercadolivro.service
 
 import br.com.mercadolivro.model.CustomerModel
+import br.com.mercadolivro.repository.CustomerRepository
 import org.springframework.stereotype.Service
 
 
 @Service
-class CustomerService {
+class CustomerService(
+    val customerRepository: CustomerRepository
+) {
 
-    val customerList = mutableListOf<CustomerModel>()
-
-    fun getAll(name: String?): List<CustomerModel> {
+     fun getAll(name: String?): List<CustomerModel> {
         name?.let {
-            return customerList.filter { it.name.contains(name, true) }
+            return customerRepository.findByNameContaining(it)
         }
-        return customerList
+        return customerRepository.findAll().toList()
     }
 
-    fun getCustomerById(id: String): CustomerModel {
-        return customerList.filter { it.id == id }.first()
+    fun getCustomerById(id: Int): CustomerModel {
+        return customerRepository.findById(id).orElseThrow()
     }
 
-    fun getCustomerByNome(name: String): List<CustomerModel> {
-        return customerList.filter { it.name.contains(name, true) }
+    fun getCustomerByName(name: String): List<CustomerModel> {
+        return customerRepository.findByNameContaining(name).toList()
     }
 
     fun getCustomerByEmail(email: String): List<CustomerModel> {
-        return customerList.filter { it.email.contains(email, true) }
+        return customerRepository.findByEmailContaining(email).toList()
     }
 
     fun create(customer: CustomerModel) {
-        val id = if (customerList.isEmpty()) {
-            "1"
-        } else {
-            customerList.last().id!!.toInt() + 1
-        }.toString()
-        customer.id = id
-        customerList.add(customer)
+        customerRepository.save(customer)
     }
 
     fun update(customer: CustomerModel) {
-        customerList.filter { it.id == customer.id }.first().let {
-            it.name = customer.name
-            it.email = customer.email
+        if (!customerRepository.existsById(customer.id!!)) {
+            throw Exception("Customer not found 🙃")
         }
+        customerRepository.save(customer)
     }
 
-    fun delete(id: String) {
-        customerList.removeIf { it.id == id }
+    fun delete(id: Int) {
+        if (!customerRepository.existsById(id)) {
+            throw Exception("Customer not found 🙃")
+        }
+        customerRepository.deleteById(id)
     }
+
 }
