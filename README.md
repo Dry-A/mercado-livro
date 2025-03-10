@@ -1,4 +1,4 @@
-# Bem-vindos ao meu MarketPlaace de Livros - meu primeiro Projeto Spring Boot e Kotlin
+# Bem-vindos ao meu MarketPlace de Livros - Projeto Spring Boot e Kotlin
 
 ### Tecnologias Utilizadas
 
@@ -18,7 +18,7 @@
 ![codando](https://pixeljoint.com/files/icons/full/desktopoverlay.gif)
 
 O projeto e estudo foi feito de fora para dentro.  ✅
-Primeiro fiz a model e todo o código na camada de Controller - praticamente fazendo na "mão" - depois fui organizando, retirando a lógica da controller e passando para a camada de Service.
+Isso quer dizer que fiz primeiro fiz a model e todo o código na camada de Controller - praticamente fazendo na "mão" - depois fui organizando, retirando a lógica da controller e passando para a camada de Service.
 Só então criei a camada de Repository, com métodos de busca e inserção no banco de dados mais específicos.
 
 🟢 Escolhi o MySQL para o banco de dados, por ser um banco que já tenho mais familiaridade e por ser um banco que é muito utilizado no mercado. Porém usei uma imagem docker para subir o banco de dados, para não precisar instalar o MySQL na minha máquina.
